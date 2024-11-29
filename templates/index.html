@@ -19,27 +19,22 @@
         </header>
 
         <section class="mt-5">
-            <img src="{% static 'shimla.jpg' %}" alt="Shimla View" class="rounded shadow-lg mx-auto d-block" style="max-width: 90%; height: auto;">
-        </section>
-
-        <section class="mt-5">
-            <h2 class="text-2xl font-bold mb-2">Why Visit Shimla?</h2>
-            <p>
-                Shimla, the capital city of Himachal Pradesh, is renowned for its breathtaking views of the Himalayan
-                mountains, pleasant weather, and colonial architecture. It is a perfect destination for travelers
-                seeking tranquility and adventure.
-            </p>
-        </section>
-
-        <section class="mt-5">
-            <h2 class="text-2xl font-bold mb-2">Top Attractions</h2>
-            <ul class="list-disc ml-5">
-                <li>The Ridge</li>
-                <li>Christ Church</li>
-                <li>Jakhoo Temple</li>
-                <li>Kufri</li>
-                <li>Mall Road</li>
-            </ul>
+            <h2 class="text-2xl font-bold mb-4">Top Attractions</h2>
+            <div class="row">
+                {% for attraction in attractions %}
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ attraction.image.url }}" class="card-img-top" alt="{{ attraction.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ attraction.name }}</h5>
+                            <p class="card-text">{{ attraction.description }}</p>
+                            <p><strong>Location:</strong> {{ attraction.location }}</p>
+                            <p><strong>Opening Hours:</strong> {{ attraction.opening_hours }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </section>
     </div>
 </body>

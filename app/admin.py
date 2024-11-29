@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import ShimlaAttraction
 
-# Register your models here.
+@admin.register(ShimlaAttraction)
+class ShimlaAttractionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'location', 'opening_hours')
+    search_fields = ('name', 'location')
