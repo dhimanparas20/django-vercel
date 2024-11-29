@@ -1,0 +1,16 @@
+# Django Settings
+DEBUG= true
+ALLOWED_HOSTS= .vercel.app,localhost
+SECRET_KEY= 
+AUTO_ClEAR_TERMINAL= true
+
+#DB Config
+DB_NAME= postgres
+DB_USER= 
+DB_PASSWORD= 
+DB_HOST= 
+DB_PORT= 6543
+
+#Supabase Bucket Config
+SUPABASE_URL= 
+SUPABASE_KEY= 
