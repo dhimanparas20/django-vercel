@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: #000; /* Pitch black */
+    background: linear-gradient(135deg, #000000, #2c2c2c); /* Subtle gradient */
     color: #f8f9fa; /* Light text */
 }
 
@@ -19,4 +19,29 @@ a {
 
 a:hover {
     color: #ffc107; /* Golden hover effect */
+}
+
+/* Style for the card images */
+.fixed-image {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Maintains aspect ratio and crops if necessary */
+    border-radius: 0.25rem; /* Matches Bootstrap's card border radius */
+}
+
+/* Glassmorphism effect for the cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1); /* Transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Border to enhance the glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass blur */
+    border-radius: 0.75rem; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Hover effect for the cards */
+.glass-card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    background: rgba(255, 255, 255, 0.2); /* Slightly brighter background */
 }
