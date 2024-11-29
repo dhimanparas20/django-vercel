@@ -9,7 +9,7 @@ BASE_DIR = settings.BASE_DIR
 class ShimlaAttraction(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='tmp/')  # Django admin file upload
+    image = models.ImageField(upload_to=settings.DOWNLOAD_PATH)  # Django admin file upload
     image_url = models.URLField(blank=True, null=True)  # Make image_url optional
     location = models.CharField(max_length=255, blank=True)
     opening_hours = models.CharField(max_length=100, blank=True)
