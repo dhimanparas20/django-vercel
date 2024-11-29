@@ -1,0 +1,22 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000; /* Pitch black */
+    color: #f8f9fa; /* Light text */
+}
+
+h1, h2 {
+    color: #ffcc00; /* Golden shade */
+}
+
+ul {
+    color: #f8f9fa; /* Light text */
+}
+
+a {
+    text-decoration: none;
+    color: #0dcaf0; /* Bootstrap primary blue */
+}
+
+a:hover {
+    color: #ffc107; /* Golden hover effect */
+}
