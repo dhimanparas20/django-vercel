@@ -24,7 +24,8 @@
                 {% for attraction in attractions %}
                 <div class="col-md-4 mb-4">
                     <div class="card bg-dark text-white">
-                        <img src="{% static 'shimla.jpg' %}" class="card-img-top" alt="{{ attraction.name }}">
+                        <!-- Display the image using the Supabase URL -->
+                        <img src="{{ attraction.image }}" class="card-img-top" alt="{{ attraction.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ attraction.name }}</h5>
                             <p class="card-text">{{ attraction.description }}</p>
