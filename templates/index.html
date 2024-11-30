@@ -28,8 +28,8 @@
                         <!-- Display the image using the Supabase URL -->
                         <img src="{{ attraction.image_url }}" class="card-img-top fixed-image" alt="{{ attraction.name }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ attraction.name }}</h5>
-                            <p class="card-text">{{ attraction.description }}</p>
+                            <h5 class="card-title"><strong>{{ attraction.name }}</strong></h5>
+                            <p class="card-text"><i>{{ attraction.description }}</i></p>
                             <p><strong>Location:</strong> {{ attraction.location }}</p>
                             <p><strong>Opening Hours:</strong> {{ attraction.opening_hours }}</p>
                         </div>
