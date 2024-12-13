@@ -20,10 +20,10 @@ SUPABASE_URL=os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
 # Application definition
-
 INSTALLED_APPS = [
     'app',
     'storages',
+    "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
