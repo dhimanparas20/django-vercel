@@ -26,7 +26,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card glass-card text-white">
                         <!-- Display the image using the Supabase URL -->
-                        <img src="{{ attraction.image_url }}" class="card-img-top fixed-image" alt="{{ attraction.name }}">
+                        <img src="{{ attraction.get_public_image_url }}" class="card-img-top fixed-image" alt="{{ attraction.name }}">
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ attraction.name }}</strong></h5>
                             <p class="card-text"><i>{{ attraction.description }}</i></p>

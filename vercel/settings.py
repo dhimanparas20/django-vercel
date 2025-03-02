@@ -22,20 +22,17 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 # Application definition
 INSTALLED_APPS = [
     'app',
-    'storages',
-    "unfold",
+    # "unfold",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -44,22 +41,56 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
 ROOT_URLCONF = 'vercel.urls'
 
+# AWS S3 Configuration
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME")
+S3_ENDPOINT = os.getenv("S3_ENDPOINT")
+
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = f'{S3_ENDPOINT}/static/'
+
+# Media files (Uploaded by users)
+MEDIA_URL = f'{S3_ENDPOINT}/media/'
+
 # Static and Templates Configurations
-STATIC_URL = '/static/'
+MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 TEMPLATES_DIR = [BASE_DIR / 'templates']
+
+# Supabase Configuration
+SUPABASE_PROJECT_ID = os.getenv("SUPABASE_PROJECT_ID", "default_project_id")  # Replace "default_project_id" with a fallback value
+
+# STORAGES setting (Django 4.2+)
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'endpoint_url': S3_ENDPOINT,  # Use the custom Supabase endpoint
+        },
+    },
+    'staticfiles': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'location': 'static',  # Store static files under the 'static/' prefix
+            'endpoint_url': S3_ENDPOINT,  # Use the custom Supabase endpoint
+        },
+    },
+    'mediafiles': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'location': 'media',  # Store media files under the 'media/' prefix
+            'endpoint_url': S3_ENDPOINT,  # Use the custom Supabase endpoint
+        },
+    },
+}
+
+
 
 TEMPLATES = [
     {
